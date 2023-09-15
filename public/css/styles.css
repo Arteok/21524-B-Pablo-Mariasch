@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(241, 241, 241);
+    color: black;
+}
+p{
+    margin-bottom: 0px;
+}
+#pagination-container {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff; /* Color de fondo del botón activo */
+    border-color: #007bff; /* Borde del botón activo */
+    color: #fff; /* Color del texto del botón activo */
+}
+
+header{
+    background-color: darkcyan;
+}
+footer{
+    background-color: darkcyan;
+}
+
+.separador {
+    border-bottom: 5px solid #6d6e70;
+    box-shadow: 0 0 8px 0px #ccc;
+}
