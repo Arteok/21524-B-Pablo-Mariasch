@@ -22,13 +22,13 @@
             <ul>
                 <% listaDePosts.forEach((post)=> { %>
 
-                <div class="my-3 p-3 border rounded">
+                    <div class=" p-3 border rounded">
                     <!-- Contenido del div -->
                     <h2><%= post.titulo %></h2>
                     <p><%= post.contenido %></p>
                     <img src="<%= post.linkImg %>" class="img-fluid" alt="Imagen relacionada">
                     <p>Fecha de creación: <%= post.createdAt %></p>
-                    <a class="btn btn-primary text-center" href="/editar/<%= post.id %>">Eliminar</a>
+                    <a class="btn btn-primary text-center" href="/eliminar/<%= post.id %>">Eliminar</a>
                 </div>                
                 
                 <% }); %>
@@ -37,8 +37,7 @@
 
         <!-- footer -->
         <%- include('./partials/footer'); %>
-    </div>
-    <script src="./js/main.js"></script>
+    </div>    
 </body>
 
 </html>

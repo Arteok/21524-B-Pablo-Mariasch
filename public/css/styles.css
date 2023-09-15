@@ -1,26 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
-    background-color: rgb(241, 241, 241);
+    background-color: #F5F5F5;
     color: black;
 }
 p{
     margin-bottom: 0px;
 }
-#pagination-container {
+ul{
+    padding-right: 2rem;
+    margin-bottom: 0;
+} 
+
+/* #pagination-container {
     display: flex;
     justify-content: center;
-}
+} */
 
-.pagination .page-item.active .page-link {
-    background-color: #007bff; /* Color de fondo del botón activo */
-    border-color: #007bff; /* Borde del botón activo */
-    color: #fff; /* Color del texto del botón activo */
-}
+/* .pagination .page-item.active .page-link {
+    background-color: #007bff; 
+    border-color: #007bff; 
+    color: darkcyan; 
+} */
 
 header{
     background-color: darkcyan;
+    color: aliceblue;
+    height: auto;
+    box-shadow: 0 0 8px 0px #6d6e70;
 }
+main{
+    height: auto;
+    box-shadow: 0 0 8px 0px rgba(17, 17, 17, 0.9);
+
+}
+
 footer{
     background-color: darkcyan;
+    color: aliceblue;
+    height: auto;
+    box-shadow: 0 0 8px 0px rgba(17, 17, 17, 0.9);
 }
 
 .separador {
