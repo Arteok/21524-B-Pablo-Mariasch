@@ -22,6 +22,7 @@ app.set("view engine", "ejs");
 app.get("/", async (req, res) => {
     const posts = await PostModel.findAll();
     res.render("index", {
+        ruta: "./inicio",
         title: "Foro Random",
         listaDePosts: posts.reverse(),
     });
@@ -29,8 +30,15 @@ app.get("/", async (req, res) => {
 
 // Ruta para crear un nuevo post
 app.get("/crear", async (req, res) => {
-    res.render("crear");
+    res.render("index", {
+        ruta: "./crear",
+        title: "Foro Random",        
+    });
 });
+
+/* app.get("/crear", async (req, res) => {
+    res.render("crear");
+}); */
 
 // Ruta para elegir un post para editar
 app.get("/editar", async (req, res) => {
