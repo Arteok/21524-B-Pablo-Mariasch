@@ -67,23 +67,38 @@ app.get("/eliminar", async (req, res) => {
     });
 });
 
-// Ruta para eliminar un post  a medio hacer
+// Ruta para eliminar un post 
 app.get("/eliminar/:id", async (req, res) => {
     const postId = req.params.id;
-    const post = await PostModel.findByPk(postId); 
-    const deletePost = await PostModel.destroy({
-        where: {
-            id: postId
-        }        
-    });
+    try {
+        await PostModel.destroy({
+            where: {
+                id: postId
+            }        
+        });
 
-    res.render("index", { 
-        ruta: "./eliminar",
-        title: "Foro Random", 
-        post,               
-        deletePost        
-    });
-});  
+        // Usar JavaScript para mostrar un alert de éxito
+        const alertMessage = "Post eliminado con éxito";
+        const redirectUrl = "/";
+        res.send(`
+            <script>
+                alert("${alertMessage}");
+                window.location.href = "${redirectUrl}";
+            </script>
+        `);
+    } catch (error) {
+        // Usar JavaScript para mostrar un alert de error
+        const errorMessage = "Hubo un problema al eliminar el post";
+        const redirectUrlOnError = "/"; 
+        res.send(`
+            <script>
+                alert("${errorMessage}");
+                window.location.href = "${redirectUrlOnError}";
+            </script>
+        `);
+        
+    }
+}); 
  
 // Rutas relacionadas a las posts (pueden estar definidas en "./src/routes/notes.routes")
 app.use("/posts", require("./src/routes/posts.routes"));

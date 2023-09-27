@@ -30,17 +30,4 @@ const updatePost = async (req, res) => {
     res.redirect("/");
 };
 
-const deletePost = async (req, res) => {
-    /* const postId = req.params.id;
-    
-    await PostModel.destroy({
-        where: {
-            id: postId
-        }
-    }); */
-
-    res.redirect("/");
-};
-
-
-module.exports = { createPost, listPosts, updatePost, deletePost };
+module.exports = { createPost, listPosts, updatePost };
