@@ -1,75 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+<main>
+    <div class="formulario">
+        <h1>Eliminar Publicación</h1>
+        <div class="panel">
+            <form action="/posts/<%= post.id %>" id="post-form" method="post">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <div class="mb-3 mt-1">
+                    <label for="post-title" class="form-label">Título:</label>
+                    <input type="text" name="titulo" class="form-control" placeholder="@title"
+                        value="<%= post.titulo %>" required>
+                </div>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <title>Foro Random</title>
+                <div class="mb-3">
+                    <label for="post-content" class="form-label">Contenido:</label>
+                    <textarea class="form-control" name="contenido" id="" cols="30" rows="10"
+                        required><%= post.contenido %></textarea>
+                </div>
 
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
+                <div class="mb-3">
+                    <label for="image-url" class="form-label">URL de la imagen:</label>
+                    <input class="form-control" type="url" name="linkImg" id="" value="<%= post.linkImg %>">
+                </div>
 
-<body>
-    <div class="container">
-        <!-- header -->
-        <%- include('./partials/header'); %>
+                <div class="text-center mb-3">
+                    <button class="btn btn-danger text-center ">Eliminar Publicación</button>
+                </div>
 
-        <main>
-            <div class="container">
-                <h1 class="mt-5">Eliminar Publicación</h1>
-                <form action="/posts/<%= post.id %>" id="post-form" method="post" class="mt-3 mb-3">
-                    <div class="mb-3">
-                        <label for="post-title" class="form-label">Título:</label>
-                        <input type="text" name="titulo" class="form-control" placeholder="@title" value="<%= post.titulo %>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="post-content" class="form-label">Contenido:</label>
-                        <textarea class="form-control" name="contenido" id="" cols="30" rows="6" required><%= post.contenido %></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="image-url" class="form-label">URL de la imagen:</label>
-                        <input class="form-control" type="url" name="linkImg" id="" value="<%= post.linkImg %>">
-                    </div>
-                    <button class="btn btn-danger text-center" id="delete-btn">Eliminar Publicación</button>
-                </form>
-            </div>
-        </main>
-        
-        <script>
-            // Obtén el botón de eliminar por su ID
-            const deleteBtn = document.getElementById('delete-btn');
-        
-            // Agrega un evento click al botón de eliminar
-            deleteBtn.addEventListener('click', (event) => {
-                event.preventDefault(); // Evita que el formulario se envíe automáticamente
-        
-                const postId = '<%= post.id %>'; // Obtén el ID del post desde la plantilla
-        
-                // Realiza la solicitud DELETE utilizando fetch
-                fetch(`/eliminar/${postId}`, {
-                    method: 'DELETE'
-                })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('Post eliminado');
-                        // Realiza las acciones adicionales que desees después de eliminar el post
-                    } else {
-                        console.log('Error al eliminar el post');
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-            });
-        </script>
-
-        <!-- footer -->
-        <%- include('./partials/footer'); %>
+            </form>
+        </div>
     </div>
-</body>
+</main>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

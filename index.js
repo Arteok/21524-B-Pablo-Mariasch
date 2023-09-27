@@ -36,14 +36,12 @@ app.get("/crear", async (req, res) => {
     });
 });
 
-/* app.get("/crear", async (req, res) => {
-    res.render("crear");
-}); */
 
 // Ruta para elegir un post para editar
 app.get("/editar", async (req, res) => {
     const posts = await PostModel.findAll();
-    res.render("indexEditar", {
+    res.render("index", {
+        ruta: "./indexEditar",
         title: "Foro Random",
         listaDePosts: posts.reverse(),
     });
@@ -53,29 +51,39 @@ app.get("/editar", async (req, res) => {
 app.get("/editar/:id", async (req, res) => {
     const postId = req.params.id;
     const post = await PostModel.findByPk(postId);
-    res.render("editar", { post });
+    res.render("index", { 
+        ruta: "./editar",
+        title: "Foro Random",
+        post });
 });
 
 // Ruta para elegir un post para eliminar
 app.get("/eliminar", async (req, res) => {
     const posts = await PostModel.findAll();
-    res.render("indexEliminar", {
+    res.render("index", {
+        ruta: "./indexEliminar",
         title: "Foro Random",
         listaDePosts: posts.reverse(),
     });
 });
 
-// Ruta para eliminar un existente
-/* app.delete("/eliminar/:id", async (req, res) => {
+// Ruta para eliminar un post  a medio hacer
+app.get("/eliminar/:id", async (req, res) => {
     const postId = req.params.id;
-    await PostModel.destroy({ where: { id: postId } });
-    res.redirect("/"); 
-}); */
-app.delete("/eliminar/:id", async (req, res) => {
-    const postId = req.params.id;    
-    await PostModel.destroy({ where: { id: postId } });
-    res.redirect("/"); 
-}); 
+    const post = await PostModel.findByPk(postId); 
+    const deletePost = await PostModel.destroy({
+        where: {
+            id: postId
+        }        
+    });
+
+    res.render("index", { 
+        ruta: "./eliminar",
+        title: "Foro Random", 
+        post,               
+        deletePost        
+    });
+});  
  
 // Rutas relacionadas a las posts (pueden estar definidas en "./src/routes/notes.routes")
 app.use("/posts", require("./src/routes/posts.routes"));
