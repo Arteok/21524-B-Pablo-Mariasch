@@ -6,8 +6,8 @@
             <!-- Contenido del div -->
             <h2><%= post.titulo %></h2>
             <p><%= post.contenido %></p>
-            <img src="<%= post.linkImg %>" class="img-fluid" alt="Imagen relacionada">
-            <p>Fecha de creación: <%= post.createdAt %></p>
+            <img src="<%= post.linkImg %>" class="img-fluid" alt="Imagen relacionada">            
+            <p>Fecha de creación: <%= post.createdAt.toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>.</p>
         </div>
 
         <% }); %>

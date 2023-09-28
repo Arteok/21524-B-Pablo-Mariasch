@@ -7,8 +7,8 @@
             <h2><%= post.titulo %></h2>
             <p><%= post.contenido %></p>
             <img src="<%= post.linkImg %>" class="img-fluid" alt="Imagen relacionada">
-            <p>Fecha de creación: <%= post.createdAt %></p>
-            <a class="btn btn-warning text-center" href="/editar/<%= post.id %>">Editar</a>
+            <p>Fecha de creación: <%= post.createdAt.toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>.</p>
+            <a class="btn btn-info text-center" href="/editar/<%= post.id %>">Editar</a>
         </div>
 
         <% }); %>
